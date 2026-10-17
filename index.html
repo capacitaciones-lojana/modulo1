@@ -1,22 +1,333 @@
-<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Avícola La Lojana | Tema 1</title><style>
-:root{--g:#164b37;--o:#ef7d22;--ink:#20362b;--line:#e4e0d6}*{box-sizing:border-box}body{margin:0;background:#f3f5f0;color:var(--ink);font:16px/1.55 system-ui,Arial}header{background:var(--g);color:white;padding:22px 16px;border-bottom:5px solid var(--o)}header>div,main{max-width:850px;margin:auto}main{padding:14px 12px 35px}.brand{color:#ffd5ad;font-size:.8rem;font-weight:800;letter-spacing:.08em}.tag{display:inline-block;background:var(--o);padding:3px 10px;border-radius:20px;font-weight:800;margin-top:8px}h1{font-size:clamp(1.7rem,5vw,2.5rem);line-height:1.15;margin:.45em 0}h2{margin:.2em 0 .6em}.card{background:white;border:1px solid var(--line);border-radius:16px;padding:18px;margin:14px 0;box-shadow:0 3px 12px #153b2508}.small{font-size:.88rem;color:#617067}.notice{background:#fff1e4;border-left:4px solid var(--o);padding:12px;border-radius:8px}.pill{display:inline-block;background:#e6f0e8;color:var(--g);font-size:.8rem;font-weight:800;padding:4px 9px;border-radius:999px}button{border:0;border-radius:10px;background:var(--g);color:white;font-weight:750;padding:12px 15px;font-size:1rem;cursor:pointer}.secondary{background:#fff2e5;color:#85410b;border:1px solid #f0c49b}input[type=text]{width:100%;padding:11px;border:1px solid #c9d6ce;border-radius:9px;font:inherit;margin:4px 0 10px}label{font-weight:650;display:block;margin:8px 0 4px}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:15px}.progress{height:9px;background:#e8eee9;border-radius:99px;overflow:hidden;margin:10px 0}.progress div{height:100%;background:var(--o);width:0}.daylist{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:8px}.daybtn{background:#f9f7f2;color:var(--ink);border:1px solid var(--line);text-align:left}.daybtn.done{border-color:#5c9b72;background:#e8f5eb}.daybtn span{display:block;font-size:.8rem;font-weight:500;color:#617067}.option{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);padding:11px;border-radius:10px;margin:8px 0;font-weight:500;cursor:pointer}.option input{margin-top:5px;flex-shrink:0}.qtitle{font-weight:800;margin-top:18px}.hide{display:none!important}.success{background:#eaf5ec;padding:14px;border-radius:10px;border:1px solid #a8d1b2}.receipt{border:2px solid var(--g);border-radius:14px;padding:16px}.receipt h2{text-align:center;color:var(--g)}table{width:100%;border-collapse:collapse}td{padding:7px;border-bottom:1px solid var(--line)}td:first-child{color:#617067}footer{text-align:center;color:#617067;font-size:.8rem;padding:18px}@media print{header,footer,.noprint,.card:not(.receipt){display:none!important}main{padding:0}.receipt{box-shadow:none}}
-</style></head><body><header><div><div class="brand">AVÍCOLA LA LOJANA · CAPACITACIÓN ANUAL</div><span class="tag">TEMA 1 · 15 JORNADAS</span><h1>Igualdad y no discriminación en el entorno laboral</h1><p>Aprende mediante ejemplos del trabajo, situaciones para analizar y preguntas de selección.</p></div></header><main>
-<section id="home" class="card"><h2>Bienvenido</h2><p>Realiza las jornadas según el cuadernillo. Lee cada situación antes de elegir una respuesta. Puedes volver al plan y continuar en este mismo dispositivo.</p><div class="notice"><b>Importante:</b> el tiempo previsto en la guía es orientativo. Registra únicamente el tiempo real que dedicaste. Este prototipo guarda los datos en el navegador del dispositivo; no los envía automáticamente a la monitora.</div><label for="worker">Nombre y apellido</label><input id="worker" type="text" placeholder="Escribe tu nombre completo"><label for="position">Puesto de trabajo (opcional)</label><input id="position" type="text" placeholder="Ej. Galponero"><button id="start">Entrar al módulo</button></section>
-<section id="course" class="card hide"><span class="pill" id="progressLabel"></span><h2>Plan de aprendizaje</h2><div class="progress"><div id="progressBar"></div></div><p id="progressText" class="small"></p><div id="daylist" class="daylist"></div><div class="actions"><button id="finishBtn" class="secondary">Ver comprobante</button></div></section>
-<section id="lesson" class="card hide"><p class="small" id="dayMeta"></p><h2 id="lessonTitle"></h2><div class="notice" id="lessonBody"></div><p>Lee la situación y selecciona la respuesta que mejor se ajusta a los principios de igualdad, respeto y criterios objetivos.</p><div id="questions"></div><label for="minutes">¿Cuántos minutos reales dedicaste a esta jornada?</label><input id="minutes" type="text" inputmode="numeric" placeholder="Escribe minutos, por ejemplo 25"><p class="small">El tiempo es declarado por el participante y no se calcula automáticamente.</p><div class="actions"><button id="submitDay">Guardar respuestas</button><button id="back" class="secondary">Volver al plan</button></div><div id="feedback" aria-live="polite"></div></section>
-<section id="receiptSection" class="card hide"><div class="receipt"><h2>Comprobante de avance · Tema 1</h2><p style="text-align:center"><b>Igualdad y no discriminación en el entorno laboral</b><br>Avícola La Lojana</p><table><tr><td>Trabajador</td><td id="rName"></td></tr><tr><td>Puesto</td><td id="rPosition"></td></tr><tr><td>Fecha de generación</td><td id="rDate"></td></tr><tr><td>Jornadas registradas</td><td id="rDays"></td></tr><tr><td>Preguntas correctas</td><td id="rScore"></td></tr><tr><td>Minutos declarados</td><td id="rMinutes"></td></tr><tr><td>Estado</td><td id="rStatus"></td></tr></table><p class="small">Comprobante de avance generado en este dispositivo. Requiere revisión de las evidencias por la monitora y no acredita por sí solo ocho horas de capacitación.</p></div><div class="actions noprint"><button id="print">Imprimir / guardar PDF</button><button id="copy" class="secondary">Copiar resumen para WhatsApp</button><button id="backCourse" class="secondary">Volver al plan</button></div><p class="small noprint">Al finalizar, toma una captura de pantalla y envíala a la monitora.</p></section>
-</main><footer>Avícola La Lojana · Tema 1 · Versión de prueba</footer><script>
-const DAYS=[["Por qué nos importa y base legal", 40, "La igualdad y la no discriminación protegen la dignidad de las personas. En el trabajo se reflejan en el trato respetuoso, las oportunidades y las decisiones sin prejuicios. El cuadernillo menciona los artículos 11, 33, 66 y 70 de la Constitución del Ecuador; revisa el texto de la guía para recordar qué aspecto relaciona con cada artículo.", "En el galpón, dos trabajadores cumplen las mismas funciones. Uno recibe burlas por su edad y dejan de avisarle sobre capacitaciones. ¿Qué principio se está afectando?", ["La igualdad y el trato digno", "Solo la rapidez del trabajo", "Ninguno, porque son bromas"], 0, "Un compañero dice que la igualdad solo trata de hombres y mujeres. ¿Cuál respuesta coincide con el cuadernillo?", ["La igualdad también abarca otras características personales y el trato justo", "La igualdad solo se aplica fuera del trabajo", "La igualdad significa que todos deben hacer el mismo puesto"], 0, "¿Cuál sería una actuación coherente con el respeto y la igualdad?", ["Excluir al compañero de la conversación", "Informar de las oportunidades con criterios claros y tratarlo con respeto", "Esperar a que los demás dejen de reírse"], 1], ["¿Qué significa igualdad en el trabajo?", 30, "Igualdad significa que todas las personas tengan oportunidades y reciban un trato justo, sin discriminación. No quiere decir que todos hagan exactamente el mismo trabajo ni que reciban siempre el mismo salario: las funciones, responsabilidades y experiencia pueden ser distintas.", "Dos galponeros tienen el mismo puesto y tareas. ¿Qué sería un trato justo?", ["Dar EPP y oportunidades según reglas iguales para ambos", "Dar EPP solo al más joven", "Invitar a capacitación solo al amigo del supervisor"], 0, "Un compañero afirma: “Igualdad significa que todos debemos cobrar exactamente lo mismo, sin importar las funciones”. ¿Qué respuesta es mejor?", ["Correcto, las funciones nunca importan", "No; el trato debe ser justo y las diferencias deben tener razones laborales objetivas", "Sí, pero solo para trabajadores antiguos"], 1, "¿Cuál de estas situaciones muestra igualdad de oportunidades?", ["Avisar solo a un grupo de amigos sobre una vacante", "Publicar los requisitos y permitir que postulen quienes los cumplen", "Descartar a alguien por su lugar de nacimiento"], 1], ["Igualdad no significa que todos los puestos sean iguales", 30, "Dos compañeros pueden tener tareas, responsabilidades o experiencia distintas. Es válido tomar en cuenta esas diferencias cuando la razón tiene relación con el trabajo. No es válido decidir por prejuicios.", "Un trabajador con diez años de experiencia manejando maquinaria recibe la responsabilidad de revisar el equipo. ¿Por qué podría ser razonable?", ["Porque su experiencia se relaciona con la tarea", "Porque los demás no merecen oportunidades", "Porque la edad siempre determina la capacidad"], 0, "¿Cuál es un criterio objetivo?", ["“No me cae bien”", "Experiencia o capacitación relacionada con el puesto", "“Es de otro lugar”"], 1, "¿Cuál afirmación es correcta?", ["Igualdad exige que todos hagan exactamente las mismas tareas", "Puede haber funciones distintas si las diferencias se justifican por el trabajo", "La experiencia nunca puede tomarse en cuenta"], 1], ["¿Qué es discriminación?", 30, "La discriminación puede presentarse cuando una persona recibe un trato desfavorable por una característica personal y no por una razón legítima relacionada con las funciones. Puede aparecer en contratación, capacitación, oportunidades y trato cotidiano.", "Una persona cumple los requisitos, pero no la consideran porque “ya está muy mayor”. ¿Qué señal existe?", ["Una decisión necesariamente objetiva", "Posible discriminación por edad", "Una evaluación de conocimientos"], 1, "¿Cuál situación NO muestra por sí sola discriminación?", ["Asignar una tarea porque la persona cuenta con la capacitación necesaria", "Excluir por lugar de origen sin relación con el puesto", "Burlarse de alguien por su discapacidad"], 0, "¿En qué espacios puede aparecer discriminación?", ["Solo al contratar", "Solo fuera de la empresa", "En contratación, capacitación, oportunidades y trato diario"], 2], ["Trato respetuoso entre compañeros", 30, "Las burlas, apodos ofensivos y comentarios sobre edad, origen, apariencia o forma de hablar pueden afectar la dignidad. Que otras personas se rían no convierte el comentario en correcto. Se puede corregir un error sin humillar.", "Un compañero comete un error durante una tarea. ¿Cuál respuesta es respetuosa?", ["“Qué inútil eres”", "Explicar cómo hacerlo correctamente y permitir que lo intente de nuevo", "Pedir a todos que se burlen para que aprenda"], 1, "El apodo ofensivo hace reír a casi todo el grupo, pero incomoda al trabajador. ¿Qué debemos recordar?", ["Si la mayoría se ríe, no hay problema", "La intención de broma elimina cualquier efecto", "El respeto importa aunque otros se rían"], 2, "¿Qué conducta ayuda a mantener un entorno respetuoso?", ["Escuchar, dar instrucciones claras y evitar humillaciones", "Usar apodos por la apariencia", "Difundir errores de los demás como chisme"], 0], ["Estereotipos y prejuicios", 30, "Un estereotipo es una idea generalizada sobre cómo son las personas de un grupo. Un prejuicio es juzgar antes de conocer los hechos. Para tomar decisiones laborales conviene revisar capacidades, requisitos e información comprobable.", "Un supervisor cree que un trabajador no aprenderá una tarea por su edad, sin haberlo evaluado. ¿Qué hay detrás de esa idea?", ["Un criterio objetivo", "Un prejuicio o estereotipo", "Una capacitación aprobada"], 1, "¿Cuál decisión se apoya en información más objetiva?", ["Elegir por apariencia", "Elegir según experiencia y capacitación necesarias", "Elegir porque es amigo del encargado"], 1, "¿Qué pregunta ayuda a detectar un prejuicio?", ["¿Estoy decidiendo por hechos relacionados con el puesto o por una suposición?", "¿Cómo hago para que nadie cuestione mi decisión?", "¿A quién excluyo primero?"], 0], ["Igualdad en la contratación", 30, "La contratación debe considerar los requisitos del puesto, experiencia, conocimientos y capacidades. Una característica personal que no tenga relación con el trabajo no debería ser por sí sola motivo para excluir a una persona.", "Dos postulantes cumplen los requisitos. Uno es descartado solo por su lugar de nacimiento. ¿Qué problema hay?", ["Se aplicó un requisito técnico", "Se usó una característica personal sin relación demostrada con el puesto", "Se comprobó mayor experiencia"], 1, "¿Qué información debe orientar la selección?", ["Requisitos, capacidades y experiencia pertinente", "La edad sin relación con la tarea", "La amistad con el entrevistador"], 0, "Una pregunta de selección busca conocer si la persona puede realizar las tareas esenciales del puesto. ¿Qué tipo de pregunta es?", ["Relacionada con el trabajo", "Un prejuicio obligatorio", "Una burla"], 0], ["Salarios y oportunidades", 30, "Las diferencias salariales o de oportunidades deben poder explicarse por funciones, responsabilidades, preparación y otras condiciones pertinentes. La asignación de capacitaciones y oportunidades debe usar reglas claras, no favoritismos ni prejuicios.", "El encargado invita siempre a sus amigos a las capacitaciones y no informa a los demás. ¿Qué falta?", ["Reglas claras y acceso justo a oportunidades", "Más favoritismo", "Una razón objetiva"], 0, "¿Cuál podría justificar una diferencia de responsabilidad?", ["Una capacitación pertinente y funciones asignadas", "El origen de la persona", "Que el trabajador no le agrade al supervisor"], 0, "¿Qué es lo más adecuado al anunciar una oportunidad interna?", ["Compartir requisitos y proceso de manera clara", "Avisar solo a conocidos", "Elegir sin explicar criterios"], 0], ["Decisiones objetivas", 30, "Una decisión objetiva se apoya en información comprobable relacionada con la tarea, como experiencia, formación, capacitación y funciones. Las opiniones personales y la simpatía no sustituyen criterios relacionados con el puesto.", "Se debe elegir a una persona para revisar equipos. ¿Qué dato es más pertinente?", ["Que sea amigo del jefe", "Que tenga formación o experiencia relacionada", "Que viva en el mismo barrio que el jefe"], 1, "“Es de otro lugar, así que no será responsable”. ¿Qué tipo de razonamiento es?", ["Una prueba de desempeño", "Un prejuicio", "Un requisito técnico"], 1, "Antes de tomar una decisión laboral, conviene preguntarse…", ["¿Qué hechos relacionados con el trabajo la respaldan?", "¿A quién le caigo mejor?", "¿Cómo evito explicar mis razones?"], 0], ["Igualdad en el trato cotidiano", 30, "La igualdad se construye cada día: escuchar sin burlarse, explicar instrucciones, evitar apodos ofensivos, compartir información necesaria y corregir errores con respeto. Tener autoridad no justifica humillar.", "Un trabajador no entendió una instrucción. ¿Qué debería hacer quien supervisa?", ["Repetirla con claridad y verificar que se entienda", "Gritar para que aprenda", "Burlarse delante del grupo"], 0, "¿La autoridad permite humillar a una persona?", ["Sí, si se cometió un error", "No; se puede corregir sin humillar", "Solo cuando hay testigos"], 1, "¿Cuál acción promueve un trato igualitario?", ["Compartir información necesaria con quienes realizan la tarea", "Ocultar instrucciones a quien cae mal", "Usar apodos por la apariencia"], 0], ["Cómo actuar ante un trato desigual", 30, "Ante una situación que parece injusta, no te sumes a las burlas ni difundas rumores. Identifica qué ocurrió de manera responsable y comunícalo a la persona responsable o por el canal de la empresa. Evita sacar conclusiones sin información.", "Escuchas un apodo ofensivo repetido hacia un compañero. ¿Qué actuación es más responsable?", ["Repetirlo en otros grupos", "No participar, identificar lo ocurrido y avisar por el canal correspondiente", "Publicarlo en redes sociales"], 1, "¿Por qué no conviene difundir rumores?", ["Porque pueden aumentar el daño y no aclaran los hechos", "Porque los rumores siempre son ciertos", "Porque nunca se debe comunicar un problema"], 0, "Si no sabes si una situación fue discriminatoria, ¿qué conviene hacer?", ["Afirmarlo públicamente de inmediato", "Revisar los hechos y buscar orientación por el canal correspondiente", "Ignorar cualquier situación"], 1], ["Caso práctico: acceso a capacitación", 30, "Las oportunidades deben asignarse por criterios relacionados con la actividad y aplicarse de manera justa. Un permiso médico justificado no debe convertirse automáticamente en una suposición de falta de compromiso. Revisa los hechos y los requisitos del puesto.", "Dos trabajadores cumplen los requisitos de una capacitación. Uno tuvo un permiso médico justificado. ¿Qué sería inadecuado?", ["Revisar los requisitos de la capacitación", "Descartarlo automáticamente por el permiso justificado", "Aplicar criterios claros a ambos"], 1, "¿Qué criterio es más apropiado para elegir participantes?", ["Funciones, requisitos y necesidades de formación", "Simpatía del supervisor", "Lugar de nacimiento"], 0, "Si un compañero considera injusta la decisión, ¿qué debe poder conocer?", ["Los criterios generales aplicados", "Rumores sobre los participantes", "La vida privada de quien decidió"], 0], ["Repaso: igualdad en una página", 35, "Repasa las ideas clave: igualdad es trato justo y oportunidades; discriminación es un trato desfavorable injustificado por una característica personal; criterio objetivo se relaciona con el puesto; respeto es tratar a las personas con dignidad.", "¿Cuál ejemplo refleja igualdad?", ["Aplicar criterios claros y oportunidades justas", "Excluir por origen", "Repartir oportunidades solo entre amigos"], 0, "¿Qué distingue una razón laboral objetiva de un prejuicio?", ["La razón objetiva se relaciona con las tareas y puede comprobarse", "El prejuicio es más rápido, por eso es mejor", "No existe diferencia"], 0, "¿En qué momento debe practicarse el respeto?", ["Solo en reuniones formales", "Todos los días, en el trato cotidiano", "Solo cuando está presente el supervisor"], 1], ["A practicar: palabras clave", 30, "Recuerda las palabras clave del cuadernillo: IGUALDAD, RESPETO, DERECHOS, CAPACIDAD y JUSTICIA. La igualdad se refleja en oportunidades justas; el respeto, en el trato digno; la capacidad se valora con relación a las tareas.", "¿Cuál palabra se relaciona con tratar a las personas con dignidad?", ["Respeto", "Favoritismo", "Rumor"], 0, "¿Qué debe guiar la evaluación de una capacidad laboral?", ["Pruebas o información relacionada con la tarea", "Apariencia personal", "Lugar de nacimiento"], 0, "¿Cuál de estas conductas contradice la justicia?", ["Aplicar reglas claras", "Excluir a alguien por prejuicio", "Explicar los criterios"], 1], ["Cómo actuar y cierre del módulo", 40, "Si observas algo injusto: 1) no te sumes a burlas; 2) identifica lo ocurrido sin difundir rumores; 3) informa a la persona responsable o usa el canal de la empresa. El compromiso final es aplicar el respeto y los criterios justos en el trabajo diario.", "¿Cuál es el orden de actuación más responsable?", ["No participar, identificar los hechos y comunicar por el canal correspondiente", "Difundir rumores y después preguntar", "Participar en las burlas"], 0, "Un compañero recibe un trato injusto. ¿Qué acción ayuda?", ["Escucharlo y orientarlo hacia el canal correspondiente", "Publicar sus datos personales", "Decirle que se aguante"], 0, "¿Qué compromiso es coherente con el módulo?", ["Evitar burlas y decidir con criterios relacionados con el trabajo", "Excluir a quien es diferente", "Compartir rumores"], 0]];const KEY='loj_t1_github_v2';let data={name:'',position:'',done:{},active:null};try{data=Object.assign(data,JSON.parse(localStorage.getItem(KEY)||'{}'))}catch(e){}const $=x=>document.getElementById(x);function save(){localStorage.setItem(KEY,JSON.stringify(data))}function show(id){['home','course','lesson','receiptSection'].forEach(x=>$(x).classList.toggle('hide',x!==id))}
-function render(){let n=Object.keys(data.done).length;$('progressLabel').textContent=n+' de 15 jornadas registradas';$('progressBar').style.width=(n/15*100)+'%';$('progressText').textContent=n===15?'Todas las jornadas están registradas. Revisa el comprobante final.':'Lee el contenido y completa las preguntas de cada jornada.';$('daylist').innerHTML=DAYS.map((d,i)=>`<button class="daybtn ${data.done[i+1]?'done':''}" data-day="${i+1}">Jornada ${i+1} ${data.done[i+1]?'✓':''}<span>${d[0]}</span><span>Tiempo orientativo: ${d[1]} min</span></button>`).join('');document.querySelectorAll('[data-day]').forEach(b=>b.onclick=()=>openDay(+b.dataset.day))}
-function openDay(n){data.active=n;save();let d=DAYS[n-1],old=data.done[n]||{};$('dayMeta').textContent=`JORNADA ${n} DE 15 · Tiempo orientativo del cuadernillo: ${d[1]} minutos`;$('lessonTitle').textContent=d[0];$('lessonBody').textContent=d[2];let qs=[[d[3],d[4],d[5]],[d[6],d[7],d[8]],[d[9],d[10],d[11]]];$('questions').innerHTML=qs.map((q,i)=>`<div class="qtitle">${i+1}. ${q[0]}</div>`+q[1].map((o,j)=>`<label class="option"><input type="radio" name="q${i}" value="${j}" ${old.answers&&old.answers[i]===j?'checked':''}><span>${o}</span></label>`).join('')).join('');$('minutes').value=old.minutes||'';$('feedback').innerHTML='';show('lesson')}
-function submitDay(){let n=data.active,d=DAYS[n-1],answers=[];for(let i=0;i<3;i++){let x=document.querySelector(`input[name="q${i}"]:checked`);if(!x){$('feedback').innerHTML='<p class="notice">Responde las tres preguntas antes de guardar.</p>';return}answers.push(+x.value)}let mins=Number($('minutes').value);if(!Number.isInteger(mins)||mins<=0){$('feedback').innerHTML='<p class="notice">Escribe los minutos reales como número entero mayor que cero.</p>';return}let correct=[d[5],d[8],d[11]],score=answers.reduce((s,a,i)=>s+(a===correct[i]?1:0),0);data.done[n]={answers,score,total:3,minutes:mins,date:new Date().toISOString()};save();$('feedback').innerHTML=`<div class="success"><b>Jornada ${n} guardada en este dispositivo.</b><br>Respuestas correctas: ${score} de 3.<br>Minutos declarados: ${mins}.<p class="small">No se ha enviado automáticamente a la monitora. Toma una captura o continúa con otra jornada.</p><button id="continue">Volver al plan</button></div>`;$('continue').onclick=()=>{render();show('course')}}
-function receipt(){let a=Object.values(data.done),score=a.reduce((s,x)=>s+x.score,0),total=a.reduce((s,x)=>s+x.total,0),mins=a.reduce((s,x)=>s+x.minutes,0);$('rName').textContent=data.name;$('rPosition').textContent=data.position||'No indicado';$('rDate').textContent=new Date().toLocaleString('es-EC');$('rDays').textContent=a.length+' de 15';$('rScore').textContent=score+' de '+total;$('rMinutes').textContent=mins+' minutos declarados';$('rStatus').textContent=a.length===15?'15 jornadas registradas; pendiente de revisión de evidencias':'Avance parcial; módulo incompleto';show('receiptSection')}
-$('start').onclick=()=>{if(!$('worker').value.trim()){alert('Escribe tu nombre completo.');return}data.name=$('worker').value.trim();data.position=$('position').value.trim();save();render();show('course')};$('submitDay').onclick=submitDay;$('back').onclick=()=>{render();show('course')};$('finishBtn').onclick=receipt;$('backCourse').onclick=()=>{render();show('course')};$('print').onclick=()=>window.print();$('copy').onclick=()=>{let a=Object.values(data.done),s=a.reduce((t,x)=>t+x.score,0),tot=a.reduce((t,x)=>t+x.total,0),m=a.reduce((t,x)=>t+x.minutes,0),t=`AVÍCOLA LA LOJANA — TEMA 1
-Trabajador: ${data.name}
-Puesto: ${data.position||'No indicado'}
-Fecha: ${new Date().toLocaleDateString('es-EC')}
-Jornadas: ${a.length}/15
-Resultado: ${s}/${tot}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Avícola La Lojana | Tema 1</title>
+<style>
+:root{--verde:#164b37;--naranja:#ef7d22;--fondo:#f3f5f0;--texto:#20362b;--borde:#e4e0d6}
+*{box-sizing:border-box}
+body{margin:0;background:var(--fondo);color:var(--texto);font:16px/1.55 Arial,sans-serif}
+header{background:var(--verde);color:white;padding:24px 16px;border-bottom:5px solid var(--naranja)}
+header div,main{max-width:850px;margin:auto}
+main{padding:14px 12px 35px}
+.marca{font-size:.8rem;font-weight:bold;letter-spacing:.08em;color:#ffd5ad}
+.etiqueta{display:inline-block;background:var(--naranja);padding:4px 10px;border-radius:20px;font-weight:bold;margin-top:8px}
+h1{font-size:clamp(1.7rem,5vw,2.5rem);line-height:1.15}
+.tarjeta{background:white;border:1px solid var(--borde);border-radius:16px;padding:18px;margin:14px 0}
+.aviso{background:#fff1e4;border-left:4px solid var(--naranja);padding:12px;border-radius:8px}
+.pequeno{font-size:.88rem;color:#617067}
+label{display:block;font-weight:bold;margin:9px 0 4px}
+input[type=text]{width:100%;padding:12px;border:1px solid #c9d6ce;border-radius:9px;font-size:1rem;margin:4px 0 10px}
+button{border:0;border-radius:10px;background:var(--verde);color:white;font-weight:bold;padding:12px 15px;font-size:1rem;cursor:pointer}
+.secundario{background:#fff2e5;color:#85410b;border:1px solid #f0c49b}
+.acciones{display:flex;gap:9px;flex-wrap:wrap;margin-top:15px}
+.oculto{display:none!important}
+.progreso{height:9px;background:#e8eee9;border-radius:99px;overflow:hidden;margin:10px 0}
+.progreso div{height:100%;width:0;background:var(--naranja)}
+.jornadas{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:8px}
+.boton-jornada{background:#f9f7f2;color:var(--texto);border:1px solid var(--borde);text-align:left}
+.boton-jornada.completa{background:#e8f5eb;border-color:#5c9b72}
+.boton-jornada span{display:block;font-size:.8rem;font-weight:normal;color:#617067}
+.pregunta{font-weight:bold;margin-top:18px}
+.opcion{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--borde);padding:11px;border-radius:10px;margin:8px 0;font-weight:normal;cursor:pointer}
+.opcion input{margin-top:5px}
+.exito{background:#eaf5ec;padding:14px;border-radius:10px;border:1px solid #a8d1b2}
+.comprobante{border:2px solid var(--verde);border-radius:14px;padding:16px;background:white}
+.comprobante h2{text-align:center;color:var(--verde)}
+table{width:100%;border-collapse:collapse}
+td{padding:8px;border-bottom:1px solid var(--borde);overflow-wrap:anywhere}
+td:first-child{color:#617067}
+footer{text-align:center;color:#617067;font-size:.8rem;padding:18px}
+@media print{header,footer,.noimprimir,.tarjeta:not(.recibo){display:none!important}body{background:white}main{padding:0}.comprobante{box-shadow:none}}
+</style>
+</head>
+<body>
+<header>
+<div>
+<div class="marca">AVÍCOLA LA LOJANA · CAPACITACIÓN</div>
+<span class="etiqueta">TEMA 1 · 15 JORNADAS</span>
+<h1>Igualdad y no discriminación en el entorno laboral</h1>
+<p>Aprende con ejemplos, analiza situaciones y comprueba lo aprendido.</p>
+</div>
+</header>
+<main>
+<section id="inicio" class="tarjeta">
+<h2>Bienvenido al módulo</h2>
+<p>Lee cada situación y selecciona la respuesta que consideres correcta. Puedes avanzar por jornadas.</p>
+<div class="aviso"><b>Importante:</b> registra únicamente el tiempo real que dediques a las actividades. El avance se guarda en este navegador y dispositivo; no se envía automáticamente a la monitora.</div>
+<label for="nombre">Nombre y apellido</label>
+<input id="nombre" type="text" placeholder="Escribe tu nombre completo">
+<label for="puesto">Puesto de trabajo (opcional)</label>
+<input id="puesto" type="text" placeholder="Ej. Galponero">
+<button id="entrar">Entrar al módulo</button>
+</section>
+
+<section id="plan" class="tarjeta oculto">
+<strong id="etiquetaProgreso"></strong>
+<h2>Plan de aprendizaje</h2>
+<div class="progreso"><div id="barra"></div></div>
+<p id="textoProgreso" class="pequeno"></p>
+<div id="listaJornadas" class="jornadas"></div>
+<div class="acciones"><button id="verComprobante" class="secundario">Ver comprobante de avance</button></div>
+</section>
+
+<section id="actividad" class="tarjeta oculto">
+<p id="metaJornada" class="pequeno"></p>
+<h2 id="tituloJornada"></h2>
+<div id="lectura" class="aviso"></div>
+<p>Analiza el caso antes de seleccionar una respuesta. Elige la opción más adecuada.</p>
+<div id="preguntas"></div>
+<label for="minutos">Minutos reales dedicados a esta jornada</label>
+<input id="minutos" type="text" inputmode="numeric" placeholder="Ej. 25">
+<p class="pequeno">El tiempo es declarado por el participante; no se mide automáticamente.</p>
+<div class="acciones">
+<button id="guardar">Guardar respuestas</button>
+<button id="volver" class="secundario">Volver al plan</button>
+</div>
+<div id="resultado"></div>
+</section>
+
+<section id="seccionComprobante" class="tarjeta oculto">
+<div class="comprobante">
+<h2>Comprobante de avance · Tema 1</h2>
+<p style="text-align:center"><b>Igualdad y no discriminación en el entorno laboral</b><br>Avícola La Lojana</p>
+<table>
+<tr><td>Trabajador</td><td id="cNombre"></td></tr>
+<tr><td>Puesto</td><td id="cPuesto"></td></tr>
+<tr><td>Fecha de generación</td><td id="cFecha"></td></tr>
+<tr><td>Jornadas registradas</td><td id="cJornadas"></td></tr>
+<tr><td>Preguntas correctas</td><td id="cPuntaje"></td></tr>
+<tr><td>Minutos declarados</td><td id="cMinutos"></td></tr>
+<tr><td>Estado</td><td id="cEstado"></td></tr>
+</table>
+<p class="pequeno">Este comprobante resume el avance registrado en este dispositivo. La monitora debe revisar las evidencias. No acredita por sí solo ocho horas de capacitación.</p>
+</div>
+<div class="acciones noimprimir">
+<button id="imprimir">Imprimir / guardar PDF</button>
+<button id="copiar" class="secundario">Copiar resumen para WhatsApp</button>
+<button id="volverPlan" class="secundario">Volver al plan</button>
+</div>
+<p class="pequeno noimprimir">Toma una captura de esta pantalla y envíala a la monitora por WhatsApp.</p>
+</section>
+</main>
+<footer>Avícola La Lojana · Tema 1 · Versión de prueba</footer>
+
+<script>
+const JORNADAS = [
+{
+titulo:"1. Importancia de la igualdad y base legal",
+min:40,
+lectura:"La igualdad y la no discriminación protegen la dignidad de las personas. En el trabajo se reflejan en el trato respetuoso, las oportunidades y las decisiones sin prejuicios. El cuadernillo menciona los artículos 11, 33, 66 y 70 de la Constitución del Ecuador. Consulta el cuadernillo para estudiar el sentido de cada artículo.",
+preguntas:[
+["En el galpón, un trabajador recibe burlas por su edad y dejan de informarle sobre capacitaciones. ¿Qué principio se afecta?",["La igualdad y el trato digno","Solo la rapidez del trabajo","Ninguno, porque son bromas"],0],
+["Un compañero dice que la igualdad solo trata de hombres y mujeres. ¿Qué respuesta es más adecuada?",["También abarca otras características personales y el trato justo","Solo se aplica fuera del trabajo","Significa que todos deben tener el mismo puesto"],0],
+["¿Qué acción es más coherente con la igualdad?",["Excluir al compañero","Informar oportunidades con criterios claros y respetuosos","Esperar que otros dejen de reírse"],1]
+]},
+{
+titulo:"2. ¿Qué significa igualdad en el trabajo?",
+min:30,
+lectura:"La igualdad significa oportunidades y trato justo, sin discriminación. No significa que todos hagan exactamente el mismo trabajo ni que reciban siempre el mismo salario: las funciones, responsabilidades y experiencia pueden ser distintas.",
+preguntas:[
+["Dos galponeros tienen el mismo puesto y tareas. ¿Qué sería un trato justo?",["Dar EPP y oportunidades conforme a reglas claras","Dar EPP solo al más joven","Capacitar solo al amigo del supervisor"],0],
+["¿Qué respuesta es correcta sobre las diferencias salariales?",["Nunca importan las funciones","Deben tener razones laborales objetivas","Dependen de la amistad con el jefe"],1],
+["¿Cuál muestra igualdad de oportunidades?",["Avisar solo a los amigos","Publicar requisitos y permitir postular a quienes los cumplen","Descartar por lugar de nacimiento"],1]
+]},
+{
+titulo:"3. Puestos, funciones y criterios objetivos",
+min:30,
+lectura:"Las tareas, responsabilidades o experiencia pueden ser diferentes. Las diferencias deben tener relación con el trabajo. Una decisión objetiva se apoya en hechos comprobables; un prejuicio se basa en suposiciones.",
+preguntas:[
+["Un trabajador con experiencia en maquinaria es encargado de revisar el equipo. ¿Por qué puede ser razonable?",["Su experiencia se relaciona con la tarea","Los demás no merecen oportunidades","La edad siempre determina la capacidad"],0],
+["¿Cuál es un criterio objetivo?",["No me cae bien","Experiencia o capacitación relacionada con el puesto","Es de otro lugar"],1],
+["¿Cuál afirmación es correcta?",["Todos deben hacer exactamente las mismas tareas","Las funciones pueden variar por razones relacionadas con el trabajo","La experiencia nunca cuenta"],1]
+]},
+{
+titulo:"4. ¿Qué es la discriminación?",
+min:30,
+lectura:"La discriminación puede aparecer cuando una persona recibe un trato desfavorable por una característica personal sin una razón legítima relacionada con las funciones. Puede presentarse en contratación, capacitación, oportunidades y trato cotidiano.",
+preguntas:[
+["Una persona cumple los requisitos, pero la descartan porque “ya está muy mayor”. ¿Qué señal existe?",["Una decisión necesariamente objetiva","Posible discriminación por edad","Una evaluación técnica"],1],
+["¿Cuál es un ejemplo de decisión relacionada con el trabajo?",["Asignar una tarea a quien tiene la formación requerida","Excluir por origen","Burlarse de la forma de hablar"],0],
+["¿Dónde puede aparecer la discriminación?",["Solo en la contratación","En contratación, capacitación, oportunidades y trato diario","Solo fuera del trabajo"],1]
+]},
+{
+titulo:"5. Trato respetuoso entre compañeros",
+min:30,
+lectura:"Las burlas, los apodos ofensivos y los comentarios sobre origen, edad, apariencia o forma de hablar pueden afectar la dignidad. Que otras personas se rían no convierte una conducta en correcta.",
+preguntas:[
+["Un compañero comete un error. ¿Cómo puedes ayudarle?",["Llamarlo torpe","Explicar con respeto cómo hacerlo","Invitar a otros a burlarse"],1],
+["Si todos se ríen de un apodo ofensivo, ¿eso lo vuelve correcto?",["Sí","No","Depende de quién lo diga"],1],
+["¿Cuál conducta promueve el respeto?",["Escuchar y corregir sin humillar","Difundir apodos","Ocultar información necesaria"],0]
+]},
+{
+titulo:"6. Estereotipos y prejuicios",
+min:30,
+lectura:"Un estereotipo es una idea general sobre cómo son las personas de un grupo. Un prejuicio es juzgar a alguien antes de conocer los hechos. Las decisiones laborales deben basarse en requisitos y capacidades relacionadas con la tarea.",
+preguntas:[
+["Juzgar a alguien por su apariencia sin comprobar sus capacidades es:",["Un criterio técnico","Un prejuicio","Una capacitación"],1],
+["¿Qué ayuda a tomar una decisión justa?",["Conocer requisitos y capacidades reales","Decidir por apariencia","Excluir por origen"],0],
+["¿Qué conviene hacer antes de concluir que alguien no puede realizar una tarea?",["Comprobar los requisitos y capacidades pertinentes","Suponerlo por su edad","Preguntar quién cae mejor"],0]
+]},
+{
+titulo:"7. Igualdad en la contratación",
+min:30,
+lectura:"Al seleccionar personal se revisan los requisitos del puesto, la experiencia, los conocimientos y las capacidades. Una característica personal que no tenga relación con el trabajo no debe ser por sí sola motivo de exclusión.",
+preguntas:[
+["Una persona cumple los requisitos, pero la descartan únicamente por su edad. ¿Qué problema existe?",["Se usaron criterios objetivos","Se la excluyó por una característica no relacionada con el puesto","Se verificó su capacitación"],1],
+["¿Qué se debe revisar al contratar?",["Requisitos, conocimientos y capacidades","Solo la edad","El origen sin relación con el puesto"],0],
+["¿Qué práctica es más justa?",["Aplicar criterios claros a todos los postulantes","Elegir solo conocidos","Descartar por apariencia"],0]
+]},
+{
+titulo:"8. Igualdad en salarios y oportunidades",
+min:30,
+lectura:"Las diferencias de pago y oportunidades deben explicarse por razones relacionadas con funciones, responsabilidades, preparación y condiciones. Las capacitaciones deben asignarse con criterios claros, no por favoritismo.",
+preguntas:[
+["¿Qué criterio es adecuado para asignar una capacitación?",["La amistad con quien decide","La necesidad formativa relacionada con la tarea","La apariencia"],1],
+["¿La amistad con el jefe es un criterio objetivo?",["Sí","No","Siempre"],1],
+["¿Qué ayuda a prevenir favoritismos?",["Criterios claros y relacionados con el trabajo","Decisiones secretas sin explicación","Elegir siempre al mismo grupo"],0]
+]},
+{
+titulo:"9. Decisiones objetivas",
+min:30,
+lectura:"Una decisión objetiva se apoya en información comprobable relacionada con la tarea: experiencia, formación, capacitación y funciones del puesto. Las suposiciones sobre el origen o la apariencia no sustituyen esa información.",
+preguntas:[
+["¿Qué información ayuda a elegir a un encargado de turno?",["Quién cae mejor","Experiencia, formación y capacitación","Quién vive más cerca del jefe"],1],
+["“Es amigo mío” es un criterio objetivo.",["Verdadero","Falso","Solo para ascensos"],1],
+["Antes de decidir, conviene preguntarse:",["Qué hechos relacionados con el trabajo respaldan la decisión","A quién prefiero","Cómo evitar explicar los criterios"],0]
+]},
+{
+titulo:"10. Igualdad en el trato cotidiano",
+min:30,
+lectura:"La igualdad se construye cada día: escuchar sin burlarse, explicar instrucciones, compartir información necesaria y corregir errores con respeto. Tener autoridad no justifica humillar a otra persona.",
+preguntas:[
+["Un trabajador no entiende una instrucción. ¿Qué debería hacer quien supervisa?",["Explicarla con claridad y comprobar que se entendió","Gritar para que aprenda","Burlarse delante del grupo"],0],
+["¿La autoridad permite humillar a una persona?",["Sí, cuando se equivoca","No; se puede corregir sin humillar","Solo si hay testigos"],1],
+["¿Cuál acción promueve un trato igualitario?",["Compartir información necesaria para realizar la tarea","Ocultar instrucciones a quien cae mal","Usar apodos ofensivos"],0]
+]},
+{
+titulo:"11. Cómo actuar ante un trato desigual",
+min:30,
+lectura:"Ante una situación que parece injusta, no te sumes a las burlas ni difundas rumores. Identifica lo ocurrido de manera responsable y comunícalo a la persona responsable o por el canal de la empresa.",
+preguntas:[
+["Escuchas un apodo ofensivo repetido hacia un compañero. ¿Qué actuación es más responsable?",["Repetirlo en otros grupos","No participar, identificar lo ocurrido y avisar por el canal correspondiente","Publicarlo en redes"],1],
+["¿Por qué no conviene difundir rumores?",["Pueden aumentar el daño y no aclaran los hechos","Porque siempre son ciertos","Porque nunca se debe comunicar un problema"],0],
+["Si no sabes si una situación fue discriminatoria, conviene:",["Afirmarlo públicamente de inmediato","Revisar los hechos y buscar orientación por el canal correspondiente","Ignorar cualquier problema"],1]
+]},
+{
+titulo:"12. Caso práctico: acceso a capacitación",
+min:30,
+lectura:"Las oportunidades deben asignarse mediante criterios relacionados con la actividad y aplicarse de forma justa. Un permiso médico justificado no debe convertirse automáticamente en una suposición de falta de compromiso.",
+preguntas:[
+["Dos trabajadores cumplen los requisitos; uno tuvo un permiso médico justificado. ¿Qué sería inadecuado?",["Revisar los requisitos","Descartarlo automáticamente por el permiso justificado","Aplicar criterios claros a ambos"],1],
+["¿Qué criterio es más apropiado para elegir participantes?",["Funciones, requisitos y necesidades de formación","Simpatía del supervisor","Lugar de nacimiento"],0],
+["Si un compañero considera injusta la decisión, ¿qué ayudaría?",["Conocer los criterios generales aplicados","Difundir rumores","Compartir la vida privada de quien decidió"],0]
+]},
+{
+titulo:"13. Repaso: igualdad en una página",
+min:35,
+lectura:"Repasa las ideas clave: igualdad es trato justo y oportunidades; discriminación es un trato desfavorable injustificado por una característica personal; criterio objetivo es una razón relacionada con el puesto; respeto es tratar a las personas con dignidad.",
+preguntas:[
+["¿Cuál ejemplo refleja igualdad?",["Aplicar criterios claros y oportunidades justas","Excluir por origen","Dar oportunidades solo a amigos"],0],
+["¿Qué distingue una razón laboral objetiva de un prejuicio?",["La razón objetiva se relaciona con las tareas y puede comprobarse","El prejuicio es más rápido","No existe diferencia"],0],
+["¿En qué momento debe practicarse el respeto?",["Solo en reuniones","Todos los días, en el trato cotidiano","Solo ante el supervisor"],1]
+]},
+{
+titulo:"14. Palabras clave: igualdad, respeto, derechos, capacidad y justicia",
+min:30,
+lectura:"Recuerda las palabras clave del cuadernillo: igualdad, respeto, derechos, capacidad y justicia. La igualdad se refleja en oportunidades justas; el respeto, en el trato digno; la capacidad se valora con relación a las tareas.",
+preguntas:[
+["¿Qué palabra se relaciona con tratar a las personas con dignidad?",["Respeto","Favoritismo","Rumor"],0],
+["¿Qué debe guiar la evaluación de una capacidad laboral?",["Información relacionada con la tarea","Apariencia personal","Lugar de nacimiento"],0],
+["¿Cuál conducta contradice la justicia?",["Aplicar reglas claras","Excluir a alguien por prejuicio","Explicar los criterios"],1]
+]},
+{
+titulo:"15. Cómo actuar y compromiso final",
+min:40,
+lectura:"Si observas algo injusto: 1) no te sumes a las burlas; 2) identifica lo ocurrido sin difundir rumores; 3) informa a la persona responsable o utiliza el canal de la empresa. Piensa cómo aplicar el respeto y los criterios justos en el trabajo diario.",
+preguntas:[
+["¿Cuál es el orden de actuación más responsable?",["No participar, identificar los hechos y comunicar por el canal correspondiente","Difundir rumores y después preguntar","Participar en las burlas"],0],
+["Un compañero recibe un trato injusto. ¿Qué acción ayuda?",["Escucharlo y orientarlo hacia el canal correspondiente","Publicar sus datos personales","Decirle que se aguante"],0],
+["¿Qué compromiso es coherente con el módulo?",["Evitar burlas y decidir con criterios relacionados con el trabajo","Excluir a quien es diferente","Compartir rumores"],0]
+]}
+];
+
+const CLAVE="loj_t1_version3";
+let datos={nombre:"",puesto:"",hechas:{},actual:null};
+try{datos=Object.assign(datos,JSON.parse(localStorage.getItem(CLAVE)||"{}"))}catch(e){}
+const $=id=>document.getElementById(id);
+function guardarLocal(){localStorage.setItem(CLAVE,JSON.stringify(datos))}
+function mostrar(id){["inicio","plan","actividad","seccionComprobante"].forEach(x=>$(x).classList.toggle("oculto",x!==id))}
+function dibujarPlan(){
+ let total=Object.keys(datos.hechas).length;
+ $("etiquetaProgreso").textContent=total+" de 15 jornadas registradas";
+ $("barra").style.width=(total/15*100)+"%";
+ $("textoProgreso").textContent=total===15?"Todas las jornadas están registradas. Revisa el comprobante.":"Selecciona una jornada para realizar sus actividades.";
+ $("listaJornadas").innerHTML=JORNADAS.map((j,i)=>`<button class="boton-jornada ${datos.hechas[i+1]?"completa":""}" data-j="${i+1}">Jornada ${i+1} ${datos.hechas[i+1]?"✓":""}<span>${j.titulo}</span><span>Tiempo orientativo: ${j.min} min</span></button>`).join("");
+ document.querySelectorAll("[data-j]").forEach(b=>b.onclick=()=>abrirJornada(Number(b.dataset.j)));
+}
+function abrirJornada(n){
+ datos.actual=n;guardarLocal();
+ let j=JORNADAS[n-1],anterior=datos.hechas[n]||{};
+ $("metaJornada").textContent=`JORNADA ${n} DE 15 · Tiempo orientativo: ${j.min} minutos`;
+ $("tituloJornada").textContent=j.titulo;
+ $("lectura").textContent=j.lectura;
+ $("preguntas").innerHTML=j.preguntas.map((p,i)=>`<div class="pregunta">${i+1}. ${p[0]}</div>`+p[1].map((op,k)=>`<label class="opcion"><input type="radio" name="p${i}" value="${k}" ${anterior.respuestas&&anterior.respuestas[i]===k?"checked":""}><span>${op}</span></label>`).join("")).join("");
+ $("minutos").value=anterior.minutos||"";
+ $("resultado").innerHTML="";
+ mostrar("actividad");
+}
+function guardarJornada(){
+ let n=datos.actual,j=JORNADAS[n-1],respuestas=[];
+ for(let i=0;i<j.preguntas.length;i++){
+  let elegida=document.querySelector(`input[name="p${i}"]:checked`);
+  if(!elegida){$("resultado").innerHTML='<p class="aviso">Responde las tres preguntas antes de guardar.</p>';return}
+  respuestas.push(Number(elegida.value));
+ }
+ let minutos=Number($("minutos").value);
+ if(!Number.isInteger(minutos)||minutos<=0){$("resultado").innerHTML='<p class="aviso">Escribe los minutos reales como número entero mayor que cero.</p>';return}
+ let correctas=respuestas.reduce((s,r,i)=>s+(r===j.preguntas[i][2]?1:0),0);
+ datos.hechas[n]={respuestas,correctas,total:3,minutos,fecha:new Date().toISOString()};
+ guardarLocal();
+ $("resultado").innerHTML=`<div class="exito"><b>Jornada ${n} guardada en este dispositivo.</b><br>Respuestas correctas: ${correctas} de 3.<br>Minutos declarados: ${minutos}.<p class="pequeno">El registro no se envía automáticamente a la monitora. Toma nota del resultado y continúa con otra jornada.</p><button id="continuar">Volver al plan</button></div>`;
+ $("continuar").onclick=()=>{dibujarPlan();mostrar("plan")};
+}
+function comprobante(){
+ let lista=Object.values(datos.hechas),puntos=lista.reduce((s,x)=>s+x.correctas,0),total=lista.reduce((s,x)=>s+x.total,0),minutos=lista.reduce((s,x)=>s+x.minutos,0);
+ $("cNombre").textContent=datos.nombre;
+ $("cPuesto").textContent=datos.puesto||"No indicado";
+ $("cFecha").textContent=new Date().toLocaleString("es-EC");
+ $("cJornadas").textContent=lista.length+" de 15";
+ $("cPuntaje").textContent=puntos+" de "+total;
+ $("cMinutos").textContent=minutos+" minutos declarados";
+ $("cEstado").textContent=lista.length===15?"15 jornadas registradas; pendiente de revisión de evidencias":"Avance parcial; módulo incompleto";
+ mostrar("seccionComprobante");
+}
+$("entrar").onclick=()=>{
+ let nombre=$("nombre").value.trim();
+ if(!nombre){alert("Escribe tu nombre y apellido.");return}
+ datos.nombre=nombre;datos.puesto=$("puesto").value.trim();
+ guardarLocal();dibujarPlan();mostrar("plan");
+};
+$("guardar").onclick=guardarJornada;
+$("volver").onclick=()=>{dibujarPlan();mostrar("plan")};
+$("verComprobante").onclick=comprobante;
+$("volverPlan").onclick=()=>{dibujarPlan();mostrar("plan")};
+$("imprimir").onclick=()=>window.print();
+$("copiar").onclick=()=>{
+ let lista=Object.values(datos.hechas),p=lista.reduce((s,x)=>s+x.correctas,0),t=lista.reduce((s,x)=>s+x.total,0),m=lista.reduce((s,x)=>s+x.minutos,0);
+ let texto=`AVÍCOLA LA LOJANA — TEMA 1
+Trabajador: ${datos.nombre}
+Puesto: ${datos.puesto||"No indicado"}
+Fecha: ${new Date().toLocaleDateString("es-EC")}
+Jornadas registradas: ${lista.length}/15
+Respuestas correctas: ${p}/${t}
 Minutos declarados: ${m}
-Nota: requiere revisión de evidencias.`;if(navigator.clipboard)navigator.clipboard.writeText(t).then(()=>alert('Resumen copiado. Puedes pegarlo en WhatsApp.')).catch(()=>prompt('Copia este texto:',t));else prompt('Copia este texto:',t)};if(data.name){$('worker').value=data.name;$('position').value=data.position||''}
-</script></body></html>
+Nota: requiere revisión de evidencias por la monitora.`;
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(texto).then(()=>alert("Resumen copiado. Puedes pegarlo en WhatsApp.")).catch(()=>prompt("Copia este texto:",texto))}
+ else{prompt("Copia este texto:",texto)}
+};
+if(datos.nombre){$("nombre").value=datos.nombre;$("puesto").value=datos.puesto||""}
+</script>
+</body>
+</html>
